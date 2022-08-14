@@ -370,8 +370,8 @@ If you need to have H1 headings capitalized in the note text, use:
 }
 ```
 
-In Live Preview, header hashes are hidden if the line is not active.
-Some people prefer to keep them visible to know what level header they are dealing with.
+In Live Preview, heading hashes are hidden if the line is not active.
+Some people prefer to keep them visible to know what heading levels they are dealing with.
 The code below is courtesy of @NothingIsLost on the Discord forum.
 ```css
 .cm-line > span.cm-header-1:not(.cm-formatting):before { content: "# "; }
@@ -397,4 +397,25 @@ The code below is courtesy of @NothingIsLost on the Discord forum.
 .cm-line > span.cm-header-6:not(.cm-formatting):before { content: "###### "; }
 .cm-line.cm-active > span.cm-header-6 > span:not(.cm-selection):before { content: "###### "; }
 .cm-line > span.cm-header-6 ~ span.cm-header-6:not(.cm-formatting):before { content: ""; }
+```
+
+Improved implementation to the above to show heading level in live preview:
+```css
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-1:not(.cm-hmd-codeblock):before { font-size: small; opacity: 50%; content: "# "; }
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-1 ~ span.cm-header-1:before { font-size: small; opacity: 50%; content: ""; }
+
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-2:not(.cm-hmd-codeblock):before { font-size: small; opacity: 50%; content: "## "; }
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-2 ~ span.cm-header-2:before { font-size: small; opacity: 50%; content: ""; }
+
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-3:not(.cm-hmd-codeblock):before { font-size: small; opacity: 50%; content: "### "; }
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-3 ~ span.cm-header-3:before { font-size: small; opacity: 50%; content: ""; }
+
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-4:not(.cm-hmd-codeblock):before { font-size: small; opacity: 50%; content: "#### "; }
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-4 ~ span.cm-header-4:before { font-size: small; opacity: 50%; content: ""; }
+
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-5:not(.cm-hmd-codeblock):before { font-size: small; opacity: 50%; content: "##### "; }
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-5 ~ span.cm-header-5:before { font-size: small; opacity: 50%; content: ""; }
+
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-6:not(.cm-hmd-codeblock):before { font-size: small; opacity: 50%; content: "###### "; }
+.is-live-preview .cm-line:not(.cm-active) > span.cm-header-6 ~ span.cm-header-6:before { font-size: small; opacity: 50%; content: ""; }
 ```
